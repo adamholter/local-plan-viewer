@@ -1,0 +1,16 @@
+{
+  "name": "local-plan-viewer",
+  "version": "1.0.0",
+  "description": "Dependency-free local viewer for MDX plan folders",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "local-plan-viewer": "./bin/local-plan-viewer.js"
+  },
+  "scripts": {
+    "start": "node ./bin/local-plan-viewer.js",
+    "open": "node ./bin/local-plan-viewer.js --open",
+    "check": "node --check ./bin/local-plan-viewer.js && node --check ./src/server.js && node --check ./src/render.js && node --check ./public/app.js"
+  },
+  "dependencies": {}
+}

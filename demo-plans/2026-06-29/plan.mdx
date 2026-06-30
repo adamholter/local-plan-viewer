@@ -1,0 +1,73 @@
+# Team Weekly Plan - Sunday, June 29, 2026
+
+Generated at 07:15 EDT from `demo-plans/2026-06-29`.
+
+<Diagram
+  id="weekly-board"
+  caption="A compact board for weekly planning."
+  html={`
+  <section class="demo-board">
+    <div class="demo-col demo-col-warn">
+      <h3>Needs Focus</h3>
+      <ul>
+        <li>Finalize the customer research outline.</li>
+        <li>Review pricing before the Monday standup.</li>
+      </ul>
+    </div>
+    <div class="demo-col demo-col-ok">
+      <h3>Already Handled</h3>
+      <ul>
+        <li>Inbox triage is complete.</li>
+        <li>Release notes draft is written.</li>
+      </ul>
+    </div>
+    <div class="demo-col demo-col-info">
+      <h3>Waiting</h3>
+      <ul>
+        <li>Legal review on the updated contract.</li>
+        <li>Design signoff on the onboarding flow.</li>
+      </ul>
+    </div>
+  </section>
+  `}
+  css={`
+  .demo-board { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; padding:16px; background:var(--paper); }
+  .demo-col { border:1px solid var(--line); border-radius:10px; padding:14px; background:var(--panel); }
+  .demo-col h3 { margin:0 0 10px; font-size:15px; }
+  .demo-col ul { margin:0; padding-left:18px; }
+  .demo-col-warn { background:var(--warn); }
+  .demo-col-ok { background:var(--ok); }
+  .demo-col-info { background:var(--info); }
+  @media (max-width: 860px) { .demo-board { grid-template-columns:1fr; } }
+  `}
+/>
+
+## Top Of Mind
+
+1. Prepare the Monday check-in around research, pricing, and launch risks.
+2. Keep stakeholder updates concise and grounded in what actually moved.
+3. Use the waiting lane to prevent hidden blockers from drifting all week.
+
+## This Week
+
+<Table
+  id="week-table"
+  columns={["Window", "Focus", "Notes"]}
+  rows={[
+    ["Monday morning", "Team standup", "Share the updated roadmap and risks."],
+    ["Tuesday", "Customer interviews", "Collect three quotes for the case study draft."],
+    ["Wednesday", "Prototype review", "Record feedback directly in the planning doc."],
+    ["Friday", "Launch checkpoint", "Confirm blockers, owner, and next review date."]
+  ]}
+/>
+
+## Managed For You
+
+<Checklist
+  id="weekly-checklist"
+  items={[
+    { id: "one", label: "Pulled open action items into one dated plan." },
+    { id: "two", label: "Split completed work from waiting dependencies." },
+    { id: "three", label: "Surfaced the highest-risk decisions first." }
+  ]}
+/>
