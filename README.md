@@ -4,7 +4,7 @@ Open a folder of `plan.mdx` files locally without relying on a hosted bridge.
 
 ![Preview](./assets/preview.png)
 
-Local Plan Viewer is a dependency-free Node microservice that turns dated MDX plan folders into a fast, readable browser view. It ships with a bundled demo so someone can clone the repo, run one command, and see the real UI immediately.
+Local Plan Viewer turns dated MDX plan folders into a local operating board you can open in any browser in one command. It ships with a bundled demo so someone can clone the repo, run it immediately, and see the actual UI instead of a placeholder screenshot.
 
 ## Why it exists
 
@@ -44,8 +44,8 @@ node ./bin/local-plan-viewer.js --root /path/to/plans --port 8796
 
 ## API
 
-- `GET /api/health` returns `{ ok, root }`
-- `GET /api/plans` lists available plan folders, newest first
+- `GET /api/health` returns `{ ok, rootLabel }`
+- `GET /api/plans` lists available plan folders, newest first, plus `rootLabel`
 - `GET /api/plan/:slug` returns the rendered HTML and source path
 
 ## Project structure
@@ -60,4 +60,5 @@ node ./bin/local-plan-viewer.js --root /path/to/plans --port 8796
 
 - The repo includes demo data only.
 - The app defaults to `127.0.0.1`.
+- API responses avoid absolute local filesystem paths.
 - No external services, telemetry, or package dependencies are required.

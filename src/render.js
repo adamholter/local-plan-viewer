@@ -17,7 +17,6 @@ export async function readPlan(rootDir, slug) {
     slug: safeSlug,
     title,
     sourcePath: path.relative(rootDir, planPath) || "plan.mdx",
-    sourceFilePath: planPath,
     html: renderMdx(mdx),
     updatedAt: (await fs.stat(planPath)).mtime.toISOString(),
   };
@@ -39,7 +38,7 @@ export async function listPlans(rootDir) {
       plans.push({
         slug: entry.name,
         title: findTitle(mdx) || entry.name,
-        path: planPath,
+        sourcePath: path.relative(rootDir, planPath) || path.join(entry.name, "plan.mdx"),
         updatedAt: stat.mtime.toISOString(),
       });
     } catch {

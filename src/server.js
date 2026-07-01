@@ -20,18 +20,19 @@ const MIME = {
 
 export async function startServer(options = {}) {
   const root = path.resolve(options.root || process.env.PLAN_VIEWER_ROOT || DEFAULT_ROOT);
+  const rootLabel = path.basename(root);
   const host = options.host || process.env.HOST || "127.0.0.1";
   const port = Number(options.port || process.env.PORT || 8796);
 
   const server = http.createServer(async (req, res) => {
     try {
       const url = new URL(req.url || "/", `http://${host}:${port}`);
-      if (url.pathname === "/api/plans") return sendJson(res, { plans: await listPlans(root), root });
+      if (url.pathname === "/api/plans") return sendJson(res, { plans: await listPlans(root), rootLabel });
       if (url.pathname.startsWith("/api/plan/")) {
         const slug = decodeURIComponent(url.pathname.slice("/api/plan/".length));
         return sendJson(res, await readPlan(root, slug));
       }
-      if (url.pathname === "/api/health") return sendJson(res, { ok: true, root });
+      if (url.pathname === "/api/health") return sendJson(res, { ok: true, rootLabel });
       return sendStatic(res, url.pathname);
     } catch (error) {
       return sendJson(res, { error: error.message }, 500);
