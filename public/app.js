@@ -11,6 +11,11 @@ const sourceEl = document.querySelector("#openSource");
 
 document.querySelector("#refreshPlans").addEventListener("click", loadPlans);
 document.querySelector("#refreshPlan").addEventListener("click", () => loadPlan(state.slug));
+sourceEl.addEventListener("click", (event) => {
+  if (sourceEl.getAttribute("aria-disabled") === "true") {
+    event.preventDefault();
+  }
+});
 
 await loadPlans();
 await loadPlan(state.slug || state.plans[0]?.slug || "latest");
@@ -44,8 +49,17 @@ async function loadPlan(slug) {
   titleEl.textContent = plan.title || "Local Plan";
   pathEl.textContent = plan.sourcePath || "";
   docEl.innerHTML = plan.html || "<p>No content.</p>";
-  sourceEl.href = plan.sourceFilePath ? `file://${plan.sourceFilePath}` : "#";
-  sourceEl.setAttribute("aria-disabled", "false");
+  if (plan.sourceFilePath) {
+    sourceEl.href = `file://${plan.sourceFilePath}`;
+    sourceEl.textContent = "Source";
+    sourceEl.title = "Open the local source file";
+    sourceEl.setAttribute("aria-disabled", "false");
+  } else {
+    sourceEl.href = "#";
+    sourceEl.textContent = "Path hidden";
+    sourceEl.title = "Absolute local paths are intentionally hidden";
+    sourceEl.setAttribute("aria-disabled", "true");
+  }
   await loadPlans();
 }
 

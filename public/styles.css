@@ -22,6 +22,12 @@ body {
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
+a[aria-disabled="true"] {
+  color: var(--muted);
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+}
 code {
   background: #f3f3f3;
   border: 1px solid #e1e1e1;
